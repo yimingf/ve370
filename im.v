@@ -18,6 +18,19 @@
 `ifndef _im
 `define _im
 
+<<<<<<< HEAD
+module im(data, clk, addr);
+		output wire [31:0] 	data;
+		input wire clk;
+		input wire 	[5:0] 	addr;
+
+	//parameter NMEM = 128;   // Number of memory entries,
+							// not the same as the memory size
+	//parameter IM_DATA = "im_data.txt";  // file to read data from
+
+	reg [31:0] Imemory [0:63];  // 32-bit memory with 64 entries
+	reg [31:0] k;
+=======
 module im(
 		output wire [31:0] 	data,
 		input wire			clk,
@@ -26,6 +39,7 @@ module im(
 
 	reg [31:0] Imemory [0:63];  // 32-bit memory with 64 entries
 
+>>>>>>> 14f980056707609f192789c3457eade4c2ae4280
 	/*initial begin
 		$readmemh(IM_DATA, mem, 0, NMEM-1);
 	end*/
@@ -33,6 +47,10 @@ module im(
 		for (k = 0; k < 64; k = k+1) begin
 			Imemory[k] = 32'b0;
 	end
+<<<<<<< HEAD
+	end
+=======
+>>>>>>> 14f980056707609f192789c3457eade4c2ae4280
 	
 	/*//You can give your own code block here.
 	Imemory[0] = 32'b00100000000010000000000000100000; //addi
@@ -54,4 +72,8 @@ module im(
 	//assign data = mem[addr[8:2]][31:0];
 endmodule
 
+<<<<<<< HEAD
 `endif
+=======
+`endif
+>>>>>>> 14f980056707609f192789c3457eade4c2ae4280
