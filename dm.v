@@ -22,22 +22,19 @@
 `ifndef _dm
 `define _dm
 
-module dm(rdata, addr, rd, wr, wdata);
-output wire	[31:0]	rdata;
+module dm(rdata,clk,addr,rd,wr,wdata);
+		output wire	[31:0]	rdata;
+		input wire			clk;
 		input wire	[5:0]	addr;
 		input wire			rd, wr;
 		input wire 	[31:0]	wdata;
 
 	reg [31:0] mem [0:63];  // 32-bit memory with 128 entries
 
-	always @(*) begin
-		if (wr) begin
-			mem[addr] <= wdata;
-		end
+	always @(posedge clk) begin
+		if (wr==1) mem[addr]=wdata;
 	end
-	
 	assign rdata = rd ? wdata : mem[addr][31:0];
-	// During a write, avoid the one cycle delay by reading from 'wdata'
 
 endmodule
 
